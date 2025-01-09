@@ -1,14 +1,12 @@
 {
     "name": "cartalyst/sentinel",
-    "description": "PHP 5.4+ Fully-featured Authentication & Authorization System",
+    "description": "PHP 7.3+ Fully-featured Authentication & Authorization System",
     "keywords": [
         "php",
         "cartalyst",
         "laravel",
         "auth",
-        "security",
-        "codeigniter",
-        "fuelphp"
+        "security"
     ],
     "license": "BSD-3-Clause",
     "authors": [
@@ -24,20 +22,18 @@
         "illuminate/support": "^10.0"
     },
     "require-dev": {
-        "illuminate/cookie": "~5.0",
-        "illuminate/database": "~5.0",
-        "illuminate/events": "~5.0",
-        "illuminate/http": "~5.0",
-        "illuminate/session": "~5.0",
-        "ircmaxell/password-compat": "~1.0",
-        "mockery/mockery": "~0.9",
-        "paragonie/random_compat": "^1.4||^2",
-        "phpunit/phpunit": "^4.0||^5.0"
+        "cartalyst/php-cs-fixer-config": "^2.0",
+        "illuminate/cookie": "^9.0",
+        "illuminate/database": "^9.0",
+        "illuminate/events": "^9.0",
+        "illuminate/http": "^9.0",
+        "illuminate/session": "^9.0",
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^9.0"
     },
     "suggest": {
         "illuminate/database": "By default, Sentinel utilizes the powerful Illuminate database layer.",
         "illuminate/events": "To hook into various events across Sentinel, we recommend using Illuminate's event dispatcher.",
-        "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support.",
         "symfony/http-foundation": "Required for native implementations."
     },
     "autoload": {
@@ -45,10 +41,20 @@
             "Cartalyst\\Sentinel\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Cartalyst\\Sentinel\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "extra": {
         "component": "package",
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "6.0.x-dev"
         },
         "laravel": {
             "providers": [
