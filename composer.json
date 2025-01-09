@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "cartalyst/support": "dev-master",
+        "cartalyst/support": "dev-2.0",
         "illuminate/support": "^10.0"
     },
     "require-dev": {
