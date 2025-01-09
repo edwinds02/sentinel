@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Sentinel package.
  *
  * NOTICE OF LICENSE
@@ -11,11 +11,11 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Sentinel
- * @version    2.0.18
+ * @version    6.0.0
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2019, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2022, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 namespace Cartalyst\Sentinel\Native\Facades;
@@ -41,13 +41,14 @@ class Sentinel
     /**
      * Constructor.
      *
-     * @param  \Cartalyst\Sentinel\Native\SentinelBootstrapper  $bootstrapper
+     * @param \Cartalyst\Sentinel\Native\SentinelBootstrapper $bootstrapper
+     *
      * @return void
      */
     public function __construct(SentinelBootstrapper $bootstrapper = null)
     {
         if ($bootstrapper === null) {
-            $bootstrapper = new SentinelBootstrapper;
+            $bootstrapper = new SentinelBootstrapper();
         }
 
         $this->sentinel = $bootstrapper->createSentinel();
@@ -67,6 +68,7 @@ class Sentinel
      * Creates a new Native Bootstraper instance.
      *
      * @param  \Cartalyst\Sentinel\Native\SentinelBootstrapper  $bootstrapper
+
      *
      * @return \Cartalyst\Sentinel\Native\SentinelBootstrapper
      */
@@ -82,8 +84,9 @@ class Sentinel
     /**
      * Handle dynamic, static calls to the object.
      *
-     * @param  string  $method
-     * @param  array  $args
+     * @param string $method
+     * @param array  $args
+     *
      * @return mixed
      */
     public static function __callStatic($method, $args)
@@ -93,19 +96,14 @@ class Sentinel
         switch (count($args)) {
             case 0:
                 return $instance->{$method}();
-
             case 1:
                 return $instance->{$method}($args[0]);
-
             case 2:
                 return $instance->{$method}($args[0], $args[1]);
-
             case 3:
                 return $instance->{$method}($args[0], $args[1], $args[2]);
-
             case 4:
                 return $instance->{$method}($args[0], $args[1], $args[2], $args[3]);
-
             default:
                 return call_user_func_array([$instance, $method], $args);
         }

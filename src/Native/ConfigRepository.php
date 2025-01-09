@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Sentinel package.
  *
  * NOTICE OF LICENSE
@@ -11,11 +11,11 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Sentinel
- * @version    2.0.18
+ * @version    6.0.0
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2019, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2022, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 namespace Cartalyst\Sentinel\Native;
@@ -41,7 +41,8 @@ class ConfigRepository implements ArrayAccess
     /**
      * Constructor.
      *
-     * @param  string  $file
+     * @param string $file
+     *
      * @return void
      */
     public function __construct($file = null)
@@ -62,33 +63,33 @@ class ConfigRepository implements ArrayAccess
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return isset($this->config[$key]);
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function offsetGet($key)
+    public function offsetGet($key): mixed
     {
         return $this->config[$key];
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->config[$key] = $value;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->config[$key]);
     }
